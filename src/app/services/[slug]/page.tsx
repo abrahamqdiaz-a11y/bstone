@@ -8,9 +8,8 @@ import { ButtonLink } from "@/components/ui/Button";
 import { ContentSections } from "@/components/ui/ContentSections";
 import { FaqList } from "@/components/ui/FaqList";
 import { SectionHeader } from "@/components/ui/Section";
-import type { PhotoSlotKey } from "@/content/images";
+import { servicePhotos } from "@/content/images";
 import { getService, services } from "@/content/services";
-import type { ServiceGroup } from "@/content/types";
 import { serviceSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 
@@ -26,13 +25,6 @@ export async function generateMetadata(props: PageProps<"/services/[slug]">) {
   if (!s) return {};
   return pageMetadata({ title: s.metaTitle, description: s.metaDescription, path: `/services/${s.slug}` });
 }
-
-const photoFor: Record<ServiceGroup, { slot: PhotoSlotKey; fallback: "home" | "interior" | "door" | "garden" }> = {
-  cleanouts: { slot: "service-cleanouts", fallback: "interior" },
-  transitions: { slot: "service-transitions", fallback: "garden" },
-  "market-ready": { slot: "service-market-ready", fallback: "home" },
-  projects: { slot: "service-projects", fallback: "door" },
-};
 
 export default async function ServicePage(props: PageProps<"/services/[slug]">) {
   const { slug } = await props.params;
@@ -50,7 +42,7 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
         eyebrow={s.eyebrow}
         title={s.title}
         lead={s.lead}
-        photo={photoFor[s.group]}
+        photo={servicePhotos[s.slug]}
         ctaHref="#request"
       />
 

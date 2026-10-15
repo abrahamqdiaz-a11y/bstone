@@ -37,7 +37,7 @@ npm run test:e2e    # Playwright + axe on the production build (see below)
 | Audience pages copy | `src/content/audiences.ts` |
 | Guides / checklists | `src/content/resources.ts` |
 | Homepage sections, FAQs, process | `src/content/home.ts` |
-| Photos (empty slots render illustrations) | `src/content/images.ts` → files in `public/photos/` |
+| Free stock photos (illustration fallback) | `src/content/images.ts` · [`docs/PHOTOGRAPHY.md`](docs/PHOTOGRAPHY.md) |
 | Testimonials, before/after (hidden while empty) | `src/content/proof.ts` |
 | Inquiry validation / spam / delivery | `src/lib/inquiry/*` |
 | Metadata & JSON-LD helpers | `src/lib/seo.ts`, `src/lib/schema.ts` |

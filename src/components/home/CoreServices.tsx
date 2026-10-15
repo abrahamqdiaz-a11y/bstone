@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getService, serviceGroups } from "@/content/services";
 import { Arrow } from "../ui/Button";
+import { PhotoSlot } from "../ui/PhotoSlot";
+import { groupPhotos } from "@/content/images";
 import { SectionHeader } from "../ui/Section";
 
 export function CoreServices() {
@@ -16,30 +18,33 @@ export function CoreServices() {
         />
         <ol className="mt-14 grid gap-px overflow-hidden rounded-card border hairline bg-slate/10 lg:grid-cols-3">
           {[a, b, c].map((g) => (
-            <li key={g.id} className="flex flex-col bg-white p-8 sm:p-10">
-              <span className="font-serif text-5xl text-brass" aria-hidden="true">
-                {g.label}
-              </span>
-              <h3 className="mt-6 text-[1.65rem] leading-tight">{g.title}</h3>
-              <p className="mt-4 leading-relaxed text-slate-soft">{g.body}</p>
-              <ul className="mt-8 flex-1 space-y-3 border-t hairline pt-6">
-                {g.members.map((slug) => {
-                  const s = getService(slug)!;
-                  return (
-                    <li key={slug}>
-                      <Link
-                        href={`/services/${slug}`}
-                        data-track="service_cta_click"
-                        data-track-label={slug}
-                        className="group flex items-center justify-between gap-3 font-medium text-forest"
-                      >
-                        {s.navLabel}
-                        <Arrow className="text-brass-deep transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+            <li key={g.id} className="flex flex-col bg-white">
+              <PhotoSlot slot={groupPhotos[g.id].slot} fallback={groupPhotos[g.id].fallback} className="aspect-[4/3] !rounded-none" sizes="(min-width: 1024px) 33vw, 100vw" />
+              <div className="flex flex-1 flex-col p-8 sm:p-10">
+                <span className="font-serif text-5xl text-brass" aria-hidden="true">
+                  {g.label}
+                </span>
+                <h3 className="mt-6 text-[1.65rem] leading-tight">{g.title}</h3>
+                <p className="mt-4 leading-relaxed text-slate-soft">{g.body}</p>
+                <ul className="mt-8 flex-1 space-y-3 border-t hairline pt-6">
+                  {g.members.map((slug) => {
+                    const s = getService(slug)!;
+                    return (
+                      <li key={slug}>
+                        <Link
+                          href={`/services/${slug}`}
+                          data-track="service_cta_click"
+                          data-track-label={slug}
+                          className="group flex items-center justify-between gap-3 font-medium text-forest"
+                        >
+                          {s.navLabel}
+                          <Arrow className="text-brass-deep transition-transform group-hover:translate-x-1" />
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </li>
           ))}
         </ol>

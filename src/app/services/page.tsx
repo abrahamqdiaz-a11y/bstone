@@ -3,6 +3,8 @@ import { PageHero } from "@/components/templates/PageHero";
 import { Arrow } from "@/components/ui/Button";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { getService, serviceGroups } from "@/content/services";
+import { PhotoSlot } from "@/components/ui/PhotoSlot";
+import { servicePhotos } from "@/content/images";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -39,13 +41,16 @@ export default function ServicesPage() {
                       href={`/services/${slug}`}
                       data-track="service_cta_click"
                       data-track-label={slug}
-                      className="group flex h-full flex-col rounded-card border hairline bg-white p-6 shadow-card hover:border-forest/30"
+                      className="group flex h-full flex-col overflow-hidden rounded-card border hairline bg-white shadow-card transition-shadow hover:shadow-lg hover:border-forest/30"
                     >
-                      <h3 className="text-[1.35rem]">{s.navLabel}</h3>
-                      <p className="mt-2 flex-1 leading-relaxed text-slate-soft">{s.summary}</p>
-                      <span className="mt-5 inline-flex items-center gap-2 font-medium text-forest">
-                        Learn more <Arrow className="transition-transform group-hover:translate-x-1" />
-                      </span>
+                      <PhotoSlot slot={servicePhotos[slug].slot} fallback={servicePhotos[slug].fallback} className="aspect-[16/10] !rounded-none" sizes="(min-width: 768px) 33vw, 100vw" />
+                      <div className="flex flex-1 flex-col p-6">
+                        <h3 className="text-[1.35rem]">{s.navLabel}</h3>
+                        <p className="mt-2 flex-1 leading-relaxed text-slate-soft">{s.summary}</p>
+                        <span className="mt-5 inline-flex items-center gap-2 font-medium text-forest">
+                          Learn more <Arrow className="transition-transform group-hover:translate-x-1" />
+                        </span>
+                      </div>
                     </Link>
                   </li>
                 );
