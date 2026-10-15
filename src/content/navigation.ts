@@ -1,12 +1,11 @@
 import { audiences } from "./audiences";
 import { services } from "./services";
 
-export type NavLink = { label: string; href: string; description?: string };
+export type NavLink = { label: string; href: string };
 
 export const serviceNav: NavLink[] = services.map((s) => ({
   label: s.navLabel,
   href: `/services/${s.slug}`,
-  description: s.summary,
 }));
 
 export const audienceNav: NavLink[] = audiences.map((a) => ({

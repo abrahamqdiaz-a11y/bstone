@@ -79,22 +79,17 @@ export function SiteHeader({ phone }: { phone: { display: string; href: string }
                   <div
                     id={`${menuId}-${item.label}`}
                     hidden={openMenu !== item.href}
-                    className="absolute left-1/2 top-full mt-2 w-[min(36rem,90vw)] -translate-x-1/2 rounded-card border hairline bg-white p-3 shadow-card"
+                    className="absolute left-1/2 top-full mt-2 w-72 -translate-x-1/2 rounded-card border hairline bg-white p-3 shadow-card"
                   >
-                    <ul className={item.children.length > 4 ? "grid grid-cols-2 gap-1" : "grid gap-1"}>
+                    <ul className="grid gap-0.5">
                       {item.children.map((child) => (
                         <li key={child.href}>
                           <Link
                             href={child.href}
                             aria-current={pathname === child.href ? "page" : undefined}
-                            className="block rounded-lg px-3 py-2.5 hover:bg-ivory"
+                            className="block rounded-lg px-3 py-2 hover:bg-ivory"
                           >
                             <span className="block font-medium text-forest">{child.label}</span>
-                            {child.description && (
-                              <span className="mt-0.5 block text-sm leading-snug text-slate-soft line-clamp-2">
-                                {child.description}
-                              </span>
-                            )}
                           </Link>
                         </li>
                       ))}
