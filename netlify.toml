@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Next.js Runtime (OpenNext adapter) for SSR routes and Server Actions.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

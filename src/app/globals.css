@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/*
+ * Briarstone Prep design tokens.
+ * Contrast (WCAG 2.2): slate on ivory 8.9:1, forest on ivory 10.7:1,
+ * brass-deep on ivory 5.2:1, brass-light on forest 6.1:1.
+ * Base brass (#B49A70) is decorative only — never use it for small text.
+ */
+@theme {
+  --color-ivory: #f7f5f0;
+  --color-linen: #efeae1;
+  --color-forest: #243d35;
+  --color-forest-deep: #1a2e28;
+  --color-slate: #39464c;
+  --color-slate-soft: #5a666b;
+  --color-taupe: #d8cec0;
+  --color-brass: #b49a70;
+  --color-brass-deep: #7a6443;
+  --color-brass-light: #cdb98f;
+  --color-error: #9b2c1f;
+
+  --font-serif: var(--font-newsreader), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-card: 0.875rem;
+  --shadow-card: 0 1px 2px rgb(36 61 53 / 0.04), 0 8px 24px -12px rgb(36 61 53 / 0.12);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background: var(--color-ivory);
+    color: var(--color-slate);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    color: var(--color-forest);
+    font-weight: 450;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass-deep);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-taupe);
+    color: var(--color-forest);
+  }
+}
+
+@layer components {
+  .prose-bs {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .prose-bs > * + * {
+    margin-top: 1.1em;
+  }
+  .prose-bs h2 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    margin-top: 2.25em;
+  }
+  .prose-bs a {
+    color: var(--color-forest);
+    text-decoration: underline;
+    text-decoration-color: var(--color-brass);
+    text-underline-offset: 3px;
+  }
+}
+
+@utility container-bs {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility hairline {
+  border-color: rgb(57 70 76 / 0.14);
+}
