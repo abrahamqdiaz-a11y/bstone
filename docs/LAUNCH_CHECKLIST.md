@@ -48,7 +48,7 @@ The copy assumes Briarstone **performs** sorting, removal/hauling, donation drop
 
 ## E. Assets
 
-- [ ] Logo approval (current mark: `src/components/ui/Logo.tsx`, `public/logo.svg`, `src/app/icon.svg`). Consider a professional refinement.
+- [ ] Logo approval (current mark: briar vine & roofline badge in `src/components/ui/Logo.tsx`, `public/logo.svg`, `src/app/icon.svg`, `src/app/opengraph-image.tsx`).
 - [ ] Original project photography for 8 slots in `src/content/images.ts` (hero, about, trust, problem, 4 service groups). Recommended: real Briarstone crews at work (no faces without releases), cleared rooms, PNW exteriors.
 - [ ] Before/after project examples → `src/content/proof.ts` (`projectExamples`), with client permission.
 - [ ] Testimonials → `src/content/proof.ts` (`testimonials`), verbatim with written permission. The section stays hidden while the list is empty.
