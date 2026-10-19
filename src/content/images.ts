@@ -28,13 +28,13 @@ const stock = (id: string, alt: string): Photo => ({
 });
 
 export const photos = {
-  // Supplied illustrative image (not a Briarstone job), so it keeps the stock label.
+  // Supplied image, shown without the stock label at the owner's request.
   hero: {
     src: "/photos/home-hero.webp",
     alt: "A bright coastal living room with light blue sofas, rattan chairs, palms and a view of the water",
     width: 1024,
     height: 1024,
-    stock: true,
+    stock: false,
   },
   "service-cleanouts": stock("photo-1600566753086-00f18fb6b3ea", "Natural materials and considered details in a home interior"),
   "service-inherited": stock("photo-1600047509807-ba8f99d2cdde", "A bright residential interior ready for a new chapter"),
