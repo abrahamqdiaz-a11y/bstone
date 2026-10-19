@@ -13,7 +13,7 @@ export function CoreServices() {
         <SectionHeader
           id="core-services"
           eyebrow="What we do"
-          title="One team. A home ready for its next chapter."
+          title="Estate cleanouts, downsizing and pre-listing preparation"
           intro="Our work falls into three connected areas. Many projects touch all three—which is exactly why it helps to have one team handling them."
         />
         <ol className="mt-14 grid gap-px overflow-hidden rounded-card border hairline bg-slate/10 lg:grid-cols-3">

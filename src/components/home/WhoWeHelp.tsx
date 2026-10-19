@@ -6,7 +6,7 @@ export function WhoWeHelp() {
   return (
     <section aria-labelledby="who-we-help" className="border-t hairline bg-linen/60 py-20 md:py-28">
       <div className="container-bs">
-        <SectionHeader id="who-we-help" eyebrow="Who we help" title="The people behind every home transition." />
+        <SectionHeader id="who-we-help" eyebrow="Who we help" title="Who we help across Sarasota and Manatee" />
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {homeAudiences.map((a) => (
             <li key={a.title}>

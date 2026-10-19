@@ -59,6 +59,7 @@ export const processSteps = [
   },
 ];
 
+/** Must match the audience pages in audiences.ts — every card links to a real page. */
 export const homeAudiences = [
   {
     title: "Families & Executors",
@@ -71,44 +72,37 @@ export const homeAudiences = [
     href: "/who-we-help/seniors-and-families",
   },
   {
-    title: "Homeowners",
-    body: "Clearing space, catching up on repairs, or preparing your own house to sell.",
-    href: "/services/home-cleanouts",
-  },
-  {
-    title: "Real Estate Professionals",
+    title: "Real Estate Agents",
     body: "One call for listings that need clearing, cleaning, or a punch list before photos.",
     href: "/who-we-help/real-estate-agents",
   },
+  {
+    title: "Landlords & Property Managers",
+    body: "Rental turnovers, abandoned belongings, and vacant properties cleared and made ready.",
+    href: "/who-we-help/landlords-and-property-managers",
+  },
 ];
 
+/** General questions only. Service-specific questions live on each service page. */
 export const homeFaqs: Faq[] = [
   {
-    q: "What does an estate cleanout include?",
-    a: "Typically: sorting the home's contents, setting aside keepsakes and important papers for the family, arranging donation of usable items, and removing everything else. We confirm the exact scope with you before work begins, and cleaning or repairs can follow if the home is being sold.",
+    q: "What areas do you serve?",
+    a: "We work across Sarasota and Manatee counties. Include the property's city or ZIP code when you get in touch and we'll confirm it's within our area.",
   },
   {
-    q: "How long does a whole-house cleanout take?",
-    a: "It depends on the size of the home, how full it is, how much sorting is needed, and whether cleaning or repairs follow. Once we've reviewed the property, we'll give you a realistic timeline for your project.",
+    q: "Which service do I need?",
+    a: "If you're not sure, describe the house and what has to happen next. We'll recommend the simplest option that fits, whether that's a single cleanout or a full project.",
   },
   {
-    q: "Can you help prepare an inherited home for sale?",
-    a: "Yes. We can clear the contents, clean the house, and take care of minor repairs so it's ready for your agent and for listing photos. If you live out of the area, we can plan and share updates remotely.",
+    q: "Do you give estimates before starting?",
+    a: "Yes. We review the property, agree on the scope with you, and confirm it before any work begins, so you know what's included.",
   },
   {
-    q: "What happens to items that can be donated?",
-    a: "Usable items are directed to local donation organizations where they're accepted. Each organization sets its own rules, so some items may need to be recycled or disposed of instead. We'll explain what to expect for your project.",
+    q: "Is it one company from start to finish?",
+    a: "That's the idea. Sorting, donations, removal, cleaning, and minor repairs are planned as one project with one point of contact, and any specialist work is named in the plan.",
   },
   {
-    q: "Do you help with senior downsizing?",
-    a: "Yes. We help older adults and their families decide what fits in the new space, prepare for the move, and handle donation and removal of what stays behind—always leaving decisions with the person who's moving.",
-  },
-  {
-    q: "Can you handle cleaning and minor repairs?",
-    a: "Yes. Deep cleaning and minor repairs are part of getting a home ready for its next step. Work that requires a licensed trade, like electrical or plumbing, is scoped separately or referred to a specialist.",
-  },
-  {
-    q: "Do I need to be present during the work?",
-    a: "Not for all of it. Once we've agreed on the plan and the items to keep, much of the work can happen without you on site. We'll agree on how and when you'd like updates before we begin.",
+    q: "What don't you do?",
+    a: "We don't give legal, tax, or appraisal advice, run estate sales, stage homes, or do work that needs a licensed trade. We'll tell you when something needs a specialist.",
   },
 ];

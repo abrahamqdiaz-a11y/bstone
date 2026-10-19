@@ -18,7 +18,12 @@ export async function generateMetadata(props: PageProps<"/who-we-help/[slug]">) 
   const { slug } = await props.params;
   const a = getAudience(slug);
   if (!a) return {};
-  return pageMetadata({ title: a.metaTitle, description: a.metaDescription, path: `/who-we-help/${a.slug}` });
+  return pageMetadata({
+    title: a.metaTitle,
+    description: a.metaDescription,
+    path: `/who-we-help/${a.slug}`,
+    ogImage: `audience-${a.slug}`,
+  });
 }
 
 export default async function AudiencePage(props: PageProps<"/who-we-help/[slug]">) {
@@ -41,7 +46,7 @@ export default async function AudiencePage(props: PageProps<"/who-we-help/[slug]
       />
       <section aria-labelledby="concerns" className="py-20">
         <div className="container-bs">
-          <SectionHeader id="concerns" eyebrow="What we hear" title="Common concerns, and how we help." />
+          <SectionHeader id="concerns" eyebrow="What we hear" title={a.headings.concerns} />
           <ul className="mt-12 grid gap-5 md:grid-cols-2">
             {a.concerns.map((c) => (
               <li key={c.title} className="rounded-card border hairline bg-white p-7 shadow-card">
@@ -54,18 +59,23 @@ export default async function AudiencePage(props: PageProps<"/who-we-help/[slug]
       </section>
       <div className="container-bs grid gap-14 border-t hairline py-20 lg:grid-cols-[1fr_20rem] lg:gap-20">
         <ContentSections sections={a.sections} />
-        <aside className="lg:sticky lg:top-28 lg:self-start" aria-label="Helpful guides">
-          <SidebarLinks resources={a.resources} />
+        <aside className="lg:sticky lg:top-28 lg:self-start" aria-label="Guides and local pages">
+          <SidebarLinks
+            topic="Estate cleanouts and home prep"
+            labels={{ guides: `Guides for ${a.navLabel.toLowerCase()}`, areas: `Local help for ${a.navLabel.toLowerCase()}` }}
+            resources={a.resources}
+            showAreas
+          />
         </aside>
       </div>
       <section aria-labelledby="audience-faq" className="border-t hairline py-20">
         <div className="container-bs grid gap-12 lg:grid-cols-[1fr_1.6fr]">
-          <SectionHeader id="audience-faq" eyebrow="Questions" title="Good to know." />
+          <SectionHeader id="audience-faq" eyebrow="Questions" title={a.headings.faq} />
           <FaqList faqs={a.faqs} />
         </div>
       </section>
-      <RelatedServices slugs={a.services} title="Services for you" />
-      <InquirySection sourcePage={path} />
+      <RelatedServices slugs={a.services} title={a.headings.services} />
+      <InquirySection sourcePage={path} title={`Ask about help for ${a.navLabel.toLowerCase()}`} />
     </>
   );
 }

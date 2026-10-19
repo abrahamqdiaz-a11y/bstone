@@ -5,7 +5,7 @@ import { SectionHeader } from "../ui/Section";
 /**
  * Trust section. Shows only commitments about how we work — no reviews,
  * ratings, counts, or credentials until they are verified. When real
- * testimonials are approved, add them to src/content/testimonials.ts.
+ * reviews are approved, add them to src/content/proof.ts.
  */
 const principles = [
   {
@@ -31,7 +31,7 @@ export function Trust() {
           <SectionHeader
             id="trust"
             eyebrow="How we work"
-            title="Careful hands for an important job."
+            title="How we handle a family home and its contents"
             intro={`${business.ownershipStatement ? `${business.ownershipStatement}. ` : ""}Briarstone Prep was built around a simple idea: families going through a home transition deserve one team they can rely on—people who communicate clearly and treat the home with care.`}
           />
           <ul className="mt-10 space-y-7">

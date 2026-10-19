@@ -1,27 +1,39 @@
-import { absoluteUrl, business, hasPhone, siteUrl } from "@/content/site";
+import { absoluteUrl, business, hasPhone, sameAs, serviceArea, siteUrl } from "@/content/site";
 import type { Service } from "@/content/types";
+import { ogImagePath } from "./og";
 
 const orgId = `${siteUrl}/#business`;
 
+/** City and county entries built from the serviceArea config. */
+export function areaServed() {
+  return [
+    ...serviceArea.cities.map((c) => ({ "@type": c.schemaType, name: `${c.name}, ${serviceArea.stateCode}` })),
+    ...serviceArea.counties.map((county) => ({
+      "@type": "AdministrativeArea",
+      name: `${county}, ${serviceArea.state}`,
+    })),
+  ];
+}
+
 /**
- * Business entity. Uses HomeAndConstructionBusiness (a LocalBusiness subtype)
- * and includes only fields that are filled in site.ts — unverified details are
- * never emitted.
+ * Business entity. HomeAndConstructionBusiness is a LocalBusiness subtype.
+ * Only fields filled in site.ts are emitted. A street address is included
+ * only for a public storefront; a service-area business relies on areaServed.
+ * No rating or review markup until real reviews exist.
  */
 export function businessSchema() {
   const a = business.address;
-  const hasAddress = Boolean(a.street && a.city && a.postalCode);
+  const hasAddress = business.hasPublicStorefront && Boolean(a.street && a.city && a.postalCode);
   return {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     "@id": orgId,
     name: business.name,
     ...(business.legalName && { legalName: business.legalName }),
-    description:
-      "Estate cleanouts, senior downsizing, and home preparation for families, executors, homeowners, and real estate agents.",
+    description: `Estate cleanouts, senior downsizing and home preparation for families, executors, landlords and real estate agents in ${serviceArea.region}, ${serviceArea.state}.`,
     url: siteUrl,
     logo: absoluteUrl("/logo.svg"),
-    image: absoluteUrl("/opengraph-image"),
+    image: absoluteUrl(ogImagePath("default")),
     ...(hasPhone && { telephone: business.phoneE164 }),
     ...(business.email && { email: business.email }),
     ...(hasAddress && {
@@ -34,13 +46,9 @@ export function businessSchema() {
         addressCountry: a.country,
       },
     }),
-    ...(business.confirmedServiceCities.length > 0 && {
-      areaServed: business.confirmedServiceCities.map((city) => ({
-        "@type": "City",
-        name: `${city}, WA`,
-      })),
-    }),
-    ...(business.sameAs.length > 0 && { sameAs: business.sameAs }),
+    areaServed: areaServed(),
+    ...(business.openingHours.length > 0 && { openingHours: business.openingHours }),
+    ...(sameAs.length > 0 && { sameAs }),
   };
 }
 
@@ -64,9 +72,7 @@ export function serviceSchema(service: Service) {
     description: service.metaDescription,
     url: absoluteUrl(`/services/${service.slug}`),
     provider: { "@id": orgId },
-    ...(business.confirmedServiceCities.length > 0 && {
-      areaServed: business.confirmedServiceCities.map((city) => ({ "@type": "City", name: `${city}, WA` })),
-    }),
+    areaServed: areaServed(),
   };
 }
 
@@ -83,7 +89,14 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
   };
 }
 
-export function articleSchema(a: { title: string; description: string; path: string; updated: string }) {
+export function articleSchema(a: {
+  title: string;
+  description: string;
+  path: string;
+  published: string;
+  updated: string;
+  image: string;
+}) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -91,8 +104,9 @@ export function articleSchema(a: { title: string; description: string; path: str
     description: a.description,
     url: absoluteUrl(a.path),
     mainEntityOfPage: absoluteUrl(a.path),
+    image: [absoluteUrl(a.image)],
+    datePublished: a.published,
     dateModified: a.updated,
-    datePublished: a.updated,
     author: { "@id": orgId },
     publisher: { "@id": orgId },
   };

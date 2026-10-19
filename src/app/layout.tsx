@@ -4,23 +4,21 @@ import { JsonLd } from "@/components/layout/JsonLd";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { business, hasPhone, siteUrl, telHref } from "@/content/site";
+import { business, hasPhone, serviceArea, siteUrl, telHref } from "@/content/site";
+import { allowIndexing } from "@/lib/indexing";
 import { businessSchema, websiteSchema } from "@/lib/schema";
 import { inter, newsreader } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: `${business.name} | ${business.descriptor}`,
-    template: `%s | ${business.name}`,
-  },
-  description:
-    "Estate cleanouts, senior downsizing, and pre-listing home preparation. One accountable team to clear, clean, and prepare a home for its next chapter.",
+  title: `${business.name} | Estate Cleanouts in ${serviceArea.short}, ${serviceArea.stateCode}`,
+  description: `Estate cleanouts, senior downsizing, and pre-listing home preparation in ${serviceArea.region}, ${serviceArea.state}.`,
   applicationName: business.name,
   formatDetection: { telephone: false },
-  robots:
-    process.env.NEXT_PUBLIC_ALLOW_INDEXING === "false" ? { index: false, follow: false } : { index: true, follow: true },
+  // Non-production Netlify deploys and NEXT_PUBLIC_ALLOW_INDEXING=false get
+  // noindex here and an X-Robots-Tag header from next.config.ts.
+  robots: allowIndexing ? { index: true, follow: true } : { index: false, follow: false },
 };
 
 export const viewport: Viewport = {

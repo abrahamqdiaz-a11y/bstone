@@ -1,9 +1,9 @@
 # Briarstone Prep — briarstoneprep.com
 
-Marketing and lead-generation site for **Briarstone Prep**, an estate transitions and home preparation company: estate cleanouts, inherited homes, senior downsizing, pre-listing preparation, home cleanouts and handyman projects.
+Marketing and lead-generation site for **Briarstone Prep**, an estate cleanout, downsizing and home preparation company serving Sarasota and Manatee counties, Florida: estate cleanouts, inherited homes, senior downsizing, pre-listing preparation, home and rental cleanouts and handyman projects.
 
 - **Stack:** Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Zod · Netlify
-- **Pages:** 22 statically generated pages plus a server action for inquiries
+- **Pages:** 29 statically generated pages, build-time share images, and a server action for inquiries
 - **Docs:** [`docs/STRATEGY.md`](docs/STRATEGY.md) (audit, competitors, positioning) · [`docs/KEYWORD_MAP.md`](docs/KEYWORD_MAP.md) · [`docs/LAUNCH_CHECKLIST.md`](docs/LAUNCH_CHECKLIST.md) (**read before launch**)
 
 ## Quick start
@@ -23,6 +23,7 @@ npm run lint        # ESLint (next/core-web-vitals + TypeScript)
 npm run typecheck   # next typegen && tsc
 npm test            # Vitest: validation, spam checks, delivery adapters
 npm run build
+npm run seo:check   # crawls the build: titles, descriptions, H1, canonical, og:image, place names, banned regions, footer headings, sitemap lastmod, duplicate FAQs, orphan pages
 npm run test:e2e    # Playwright + axe on the production build (see below)
 ```
 
@@ -32,13 +33,15 @@ npm run test:e2e    # Playwright + axe on the production build (see below)
 
 | What | Where |
 |---|---|
-| Business facts (phone, email, address, service area): **all VERIFY** | `src/content/site.ts` |
+| Business facts (phone, email, hours, profiles) and the `serviceArea` list: **all VERIFY** | `src/content/site.ts` |
+| City pages (published only when `ready`) | `src/content/serviceAreas.ts` |
+| Sitemap dates for non-content pages | `src/content/pages.ts` |
 | Service pages copy | `src/content/services.ts` |
 | Audience pages copy | `src/content/audiences.ts` |
 | Guides / checklists | `src/content/resources.ts` |
 | Homepage sections, FAQs, process | `src/content/home.ts` |
 | Free stock photos (illustration fallback) | `src/content/images.ts` · [`docs/PHOTOGRAPHY.md`](docs/PHOTOGRAPHY.md) |
-| Testimonials, before/after (hidden while empty) | `src/content/proof.ts` |
+| Reviews, before/after (hidden while empty) | `src/content/proof.ts`, `src/components/proof/Reviews.tsx` |
 | Inquiry validation / spam / delivery | `src/lib/inquiry/*` |
 | Metadata & JSON-LD helpers | `src/lib/seo.ts`, `src/lib/schema.ts` |
 | Analytics event helper | `src/lib/analytics.ts`, `src/components/layout/Analytics.tsx` |
@@ -65,9 +68,11 @@ Set `NEXT_PUBLIC_GTM_ID` to enable a consent banner. GTM loads only after the vi
 
 ## SEO implementation
 
-- Unique title, description and canonical on every page (`pageMetadata()`); Open Graph image generated at `/opengraph-image`
-- `sitemap.xml` and `robots.txt` generated from the content files. Deploy previews and `NEXT_PUBLIC_ALLOW_INDEXING=false` are blocked from crawling.
-- JSON-LD: `HomeAndConstructionBusiness` (verified fields only), `WebSite`, `BreadcrumbList` on every inner page, `Service` on service pages, `Article` on guides.
+- Unique title (≤60 chars), description, H1 and canonical on every page (`pageMetadata()`), each naming the service and Sarasota. `npm run seo:check` enforces this on the build.
+- Share images: one 1200×630 PNG per page, generated at build time by `src/app/og/[image]/route.tsx` and styled per section.
+- `sitemap.xml` uses each page's last real edit date (`updated` in the content files, `src/content/pages.ts`); no build-time dates, no priority.
+- Indexing: every Netlify context except production gets `noindex` meta, an `X-Robots-Tag: noindex` header and a disallow-all robots.txt (`src/lib/indexing.ts`). `netlify.toml` 301s www and HTTP to `https://briarstoneprep.com`.
+- JSON-LD: `HomeAndConstructionBusiness` with `areaServed` cities and counties from `serviceArea`, plus telephone, email, openingHours and sameAs once filled in; no street address unless `hasPublicStorefront`. `WebSite`, `BreadcrumbList` on every inner page, `Service` on service pages, `Article` (with image and published/modified dates) on guides. No rating or review markup.
 - **No `FAQPage` schema** on purpose. Google restricts FAQ rich results to authoritative government and health sites, so the markup wouldn't be eligible. FAQs stay as visible, crawlable HTML.
 
 ## Deploying to Netlify
