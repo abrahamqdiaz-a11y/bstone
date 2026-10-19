@@ -44,7 +44,7 @@ export function PhotoSlot({
             width={photo.width}
             height={photo.height}
             sizes={sizes}
-            loader={photo.stock ? unsplashLoader : undefined}
+            loader={photo.src.startsWith("https://images.unsplash.com/") ? unsplashLoader : undefined}
             loading={eager ? "eager" : "lazy"}
             fetchPriority={eager ? "high" : "auto"}
             onError={() => setFailedSrc(photo.src)}

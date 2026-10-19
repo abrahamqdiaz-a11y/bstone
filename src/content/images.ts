@@ -28,7 +28,14 @@ const stock = (id: string, alt: string): Photo => ({
 });
 
 export const photos = {
-  hero: stock("photo-1600210492486-724fe5c67fb0", "A welcoming living space with natural light"),
+  // Supplied illustrative image (not a Briarstone job), so it keeps the stock label.
+  hero: {
+    src: "/photos/home-hero.webp",
+    alt: "A bright coastal living room with light blue sofas, rattan chairs, palms and a view of the water",
+    width: 1024,
+    height: 1024,
+    stock: true,
+  },
   "service-cleanouts": stock("photo-1600566753086-00f18fb6b3ea", "Natural materials and considered details in a home interior"),
   "service-inherited": stock("photo-1600047509807-ba8f99d2cdde", "A bright residential interior ready for a new chapter"),
   "service-downsizing": stock("photo-1586023492125-27b2c045efd7", "A comfortable living area with a simple furniture arrangement"),

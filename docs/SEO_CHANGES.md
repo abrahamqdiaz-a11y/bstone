@@ -8,7 +8,7 @@ Generated from crawls of the built site before and after the October 2026 Saraso
 |---|---|---|
 | Title | Briarstone Prep \| Estate Cleanouts, Downsizing & Home Prep (58) | Estate Cleanouts & Home Prep in Sarasota \| Briarstone Prep (58) |
 | Description | Estate cleanouts, senior downsizing, and pre-listing home preparation in one coordinated plan. Briarstone Prep clears, cleans, and prepares homes for their next chapter. (169) | Estate cleanouts, senior downsizing and pre-listing prep in Sarasota and Manatee. One team clears, cleans and repairs. Call to talk through your home. (150) |
-| H1 | A home full of history. A clear path forward. | Estate Cleanout and Home Preparation in Sarasota and Manatee |
+| H1 | A home full of history. A clear path forward. | Estate Cleanouts & Downsizing in Sarasota & Manatee County |
 
 ### `/about`
 
