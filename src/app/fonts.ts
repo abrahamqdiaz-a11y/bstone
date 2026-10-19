@@ -16,3 +16,17 @@ export const inter = localFont({
   variable: "--font-inter",
   display: "swap",
 });
+
+// Logo lockup only: "Briarstone" wordmark and "Estate Prep" tagline.
+export const cormorant = localFont({
+  src: [{ path: "../fonts/cormorant-garamond-latin-600-700.woff2", style: "normal", weight: "600 700" }],
+  variable: "--font-cormorant",
+  display: "swap",
+  adjustFontFallback: "Times New Roman",
+});
+
+export const montserrat = localFont({
+  src: [{ path: "../fonts/montserrat-latin-600.woff2", style: "normal", weight: "600" }],
+  variable: "--font-montserrat",
+  display: "swap",
+});

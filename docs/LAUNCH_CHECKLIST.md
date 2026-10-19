@@ -55,7 +55,7 @@ The copy assumes Briarstone **performs** sorting, removal/hauling, donation drop
 
 ## E. Assets
 
-- [ ] Logo approval (`src/components/ui/Logo.tsx`, `public/logo.svg`, `src/app/icon.svg`).
+- [ ] Logo approval (current mark: briar vine & roofline badge in `src/components/ui/Logo.tsx`, `public/logo.svg`, `src/app/icon.svg`, and the share images in `src/app/og/[image]/route.tsx`).
 - [ ] **Stock photo alt text.** The Unsplash CDN was unreachable from the build environment, so the alt text in `src/content/images.ts` has not been checked against the actual images. Inspect each photo and correct its alt text.
 - [ ] **Real job photos.** Slots `trust`, `problem` and `about` in `src/content/images.ts` are reserved for real Briarstone photos and show the illustration until filled. Replace stock service photos as real ones become available. Save to `public/photos/` (no faces without releases).
 - [ ] Before/after project examples → `src/content/proof.ts` (`projectExamples`), with client permission.
