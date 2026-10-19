@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ContentSection } from "@/content/types";
 
 export function ContentSections({ sections }: { sections: (ContentSection & { checklist?: string[] })[] }) {
@@ -28,6 +29,17 @@ export function ContentSections({ sections }: { sections: (ContentSection & { ch
                     <path d="m6.5 10 2.5 2.5 4.5-5" fill="none" stroke="#7A6443" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                   {item}
+                </li>
+              ))}
+            </ul>
+          )}
+          {s.links && (
+            <ul className="mt-5 space-y-2">
+              {s.links.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="font-medium text-forest underline decoration-brass underline-offset-4 hover:decoration-forest">
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>

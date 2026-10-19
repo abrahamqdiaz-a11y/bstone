@@ -1,5 +1,7 @@
 # Briarstone Prep — Audit, Competitive Research & Positioning
 
+> **Superseded market (October 19, 2026):** Briarstone Prep serves **Sarasota and Manatee counties, Florida**. The competitive research in §1–2 below was gathered when the business was assumed to be in the Greater Seattle area and does not describe the Sarasota market. Positioning (§3), information architecture (§4) and brand (§5) still apply. Redo the competitor review for Sarasota/Manatee before relying on §2.
+
 _Prepared October 2026. Research inputs: preliminary Semrush keyword data supplied by the client, web search of the Greater Seattle market, and the Heritage Estate Prep site used as a structural reference._
 
 ## 1. Audit of current assets

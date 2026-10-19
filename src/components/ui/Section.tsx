@@ -1,15 +1,24 @@
 import type { ReactNode } from "react";
 
-export function Eyebrow({ children, tone = "dark" }: { children: ReactNode; tone?: "dark" | "light" }) {
+export function Eyebrow({
+  children,
+  tone = "dark",
+  as: Tag = "p",
+}: {
+  children: ReactNode;
+  tone?: "dark" | "light";
+  /** Render as the page's H1 while keeping the eyebrow styling. */
+  as?: "p" | "h1";
+}) {
   return (
-    <p
-      className={`flex items-center gap-3 text-xs font-semibold tracking-[0.18em] uppercase ${
+    <Tag
+      className={`flex items-center gap-3 font-sans text-xs font-semibold tracking-[0.18em] uppercase ${
         tone === "dark" ? "text-brass-deep" : "text-brass-light"
       }`}
     >
-      <span aria-hidden="true" className={`h-px w-8 ${tone === "dark" ? "bg-brass" : "bg-brass-light"}`} />
+      <span aria-hidden="true" className={`h-px w-8 shrink-0 ${tone === "dark" ? "bg-brass" : "bg-brass-light"}`} />
       {children}
-    </p>
+    </Tag>
   );
 }
 

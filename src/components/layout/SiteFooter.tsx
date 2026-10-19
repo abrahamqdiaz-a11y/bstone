@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { audienceNav, serviceNav } from "@/content/navigation";
 import { resources } from "@/content/resources";
-import { business, hasPhone, telHref } from "@/content/site";
+import { publishedServiceAreaPages } from "@/content/serviceAreas";
+import { business, hasPhone, serviceArea, telHref } from "@/content/site";
 import { Logo } from "../ui/Logo";
+import { PhoneIcon } from "../ui/PhoneLink";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -14,12 +16,14 @@ export function SiteFooter() {
             <Logo tone="light" />
           </Link>
           <p className="mt-5 max-w-xs leading-relaxed">
-            {business.descriptor}. One accountable team for clearing, cleaning, and preparing a home for its next chapter.
+            {business.descriptor} in {serviceArea.region}, {serviceArea.state}. One accountable team for clearing,
+            cleaning, and preparing a home for its next chapter.
           </p>
           <ul className="mt-6 space-y-2 text-sm">
             {hasPhone && (
               <li>
-                <a href={telHref} data-track="phone_click" data-track-label="footer" className="text-ivory hover:underline">
+                <a href={telHref} data-track="phone_click" data-track-label="footer" className="inline-flex items-center gap-2 text-ivory hover:underline">
+                  <PhoneIcon />
                   {business.phoneDisplay}
                 </a>
               </li>
@@ -32,16 +36,20 @@ export function SiteFooter() {
               </li>
             )}
             {business.hours && <li>{business.hours}</li>}
-            {business.contractorRegistration && <li>WA contractor reg. {business.contractorRegistration}</li>}
+            {business.contractorLicense && <li>License no. {business.contractorLicense}</li>}
           </ul>
         </div>
 
-        <FooterList title="Services" links={serviceNav} />
-        <FooterList title="Who We Help" links={audienceNav} />
+        <FooterList id="footer-services" title="Services" links={serviceNav} />
+        <FooterList id="footer-audiences" title="Who We Help" links={audienceNav} />
         <FooterList
+          id="footer-resources"
           title="Resources"
           links={[
-            ...resources.slice(0, 4).map((r) => ({ label: r.metaTitle, href: `/resources/${r.slug}` })),
+            ...publishedServiceAreaPages.map((p) => ({ label: `Estate cleanouts in ${p.city}`, href: `/service-areas/${p.slug}` })),
+            { label: "Service areas", href: "/service-areas" },
+            ...resources.slice(0, 3).map((r) => ({ label: r.metaTitle.split(" | ")[0], href: `/resources/${r.slug}` })),
+            { label: "All guides", href: "/resources" },
             { label: "About", href: "/about" },
             { label: "Contact", href: "/contact" },
           ]}
@@ -50,7 +58,7 @@ export function SiteFooter() {
       <div className="border-t border-ivory/10">
         <div className="container-bs flex flex-col gap-3 py-6 text-sm sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {business.legalName || business.name}. Serving {business.serviceRegion}.
+            © {year} {business.legalName || business.name}. Serving {serviceArea.region}, {serviceArea.state}.
           </p>
           <ul className="flex gap-6">
             <li>
@@ -70,10 +78,17 @@ export function SiteFooter() {
   );
 }
 
-function FooterList({ title, links }: { title: string; links: { label: string; href: string }[] }) {
+/**
+ * A labeled link list. The label is a plain paragraph, not a heading, so the
+ * footer doesn't add three headings to every page's outline; the nav landmark
+ * is named by it for screen readers.
+ */
+function FooterList({ id, title, links }: { id: string; title: string; links: { label: string; href: string }[] }) {
   return (
-    <div>
-      <h2 className="font-sans text-xs font-semibold tracking-[0.18em] text-brass-light uppercase">{title}</h2>
+    <nav aria-labelledby={id}>
+      <p id={id} className="font-sans text-xs font-semibold tracking-[0.18em] text-brass-light uppercase">
+        {title}
+      </p>
       <ul className="mt-5 space-y-2.5 text-[0.95rem]">
         {links.map((l) => (
           <li key={l.href}>
@@ -83,6 +98,6 @@ function FooterList({ title, links }: { title: string; links: { label: string; h
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 }

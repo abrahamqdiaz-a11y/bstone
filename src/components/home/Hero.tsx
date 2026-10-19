@@ -8,13 +8,14 @@ export function Hero() {
     <section className="relative overflow-hidden bg-linen/40">
       <div className="container-bs grid items-center gap-12 pt-12 pb-24 md:pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-28">
         <div>
-          <Eyebrow>Estate Transitions &amp; Home Preparation</Eyebrow>
-          <h1 className="mt-6 text-[2.75rem] leading-[1.02] sm:text-6xl lg:text-[4.4rem]">
+          <Eyebrow as="h1">Estate Cleanout and Home Preparation in Sarasota and Manatee</Eyebrow>
+          {/* Subheading: the visual headline, kept in its original display style. */}
+          <p className="mt-6 font-serif text-[2.75rem] leading-[1.02] font-[450] tracking-[-0.015em] text-balance text-forest sm:text-6xl lg:text-[4.4rem]">
             A home full of history.<br /><em className="font-[inherit] italic text-brass-deep">A clear path forward.</em>
-          </h1>
+          </p>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-slate sm:text-xl">
-            Estate cleanouts, downsizing, and getting a house ready to sell. One coordinated plan for the physical work,
-            with care for the home and the people moving forward.
+            Estate cleanouts, downsizing, and getting a house ready to sell across Sarasota and Manatee counties. One
+            coordinated plan for the physical work, with care for the home and the people moving forward.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/contact" track="cta_click" trackLabel="hero">

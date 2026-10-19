@@ -9,7 +9,7 @@ export function LifeEvents() {
         <SectionHeader
           id="life-events"
           eyebrow="Where you are now"
-          title="Whatever brings you here, we'll help you move forward."
+          title="Help for an estate, a downsizing move, or a home sale"
           intro="Most people find us during a change they didn't plan for, or one they've put off for a long time. Start with the situation that sounds like yours."
         />
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

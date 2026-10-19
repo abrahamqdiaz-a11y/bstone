@@ -5,13 +5,15 @@ import { CtaBand } from "@/components/ui/CtaBand";
 import { getService, serviceGroups } from "@/content/services";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
 import { servicePhotos } from "@/content/images";
+import { serviceArea } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Services",
+  title: "Estate Cleanout & Downsizing Services in Sarasota, FL",
   description:
-    "Estate cleanouts, inherited home cleanouts, senior downsizing, estate transitions, pre-listing preparation, home cleanouts, and handyman projects from Briarstone Prep.",
+    "Estate cleanouts, downsizing, pre-listing prep and repairs in Sarasota and Manatee, as single jobs or one project. Call to find the right service.",
   path: "/services",
+  ogImage: "services",
 });
 
 export default function ServicesPage() {
@@ -20,8 +22,8 @@ export default function ServicesPage() {
       <PageHero
         crumbs={[{ name: "Services", path: "/services" }]}
         eyebrow="Our services"
-        title="Everything it takes to move a home toward its next chapter."
-        lead="Choose a single service or combine several into one coordinated project. Either way, you'll know exactly what's included and who is doing the work."
+        title="Estate Cleanout, Downsizing and Home Prep Services in Sarasota"
+        lead={`Everything it takes to move a Sarasota-area home toward its next chapter, from estate cleanouts to pre-listing repairs. Choose a single service or combine several into one coordinated project across ${serviceArea.region}; either way, you'll know exactly what's included and who is doing the work.`}
       />
       <div className="container-bs space-y-16 py-20">
         {serviceGroups.map((g) => (

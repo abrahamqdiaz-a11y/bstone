@@ -15,12 +15,19 @@ const pages = [
   "/who-we-help/families-and-executors",
   "/who-we-help/real-estate-agents",
   "/who-we-help/seniors-and-families",
+  "/who-we-help/landlords-and-property-managers",
+  "/service-areas",
+  "/service-areas/sarasota",
   "/resources",
   "/resources/how-to-clean-out-an-inherited-house",
   "/resources/estate-cleanout-checklist",
   "/resources/preparing-a-house-for-sale-checklist",
   "/resources/senior-downsizing-checklist",
   "/resources/what-to-do-with-belongings-after-a-death",
+  "/resources/estate-cleanout-vs-after-death-cleanup",
+  "/resources/probate-before-clearing-a-house-florida",
+  "/resources/estate-cleanout-cost-sarasota",
+  "/resources/managing-a-sarasota-estate-cleanout-from-out-of-state",
   "/about",
   "/contact",
   "/privacy",
@@ -33,7 +40,7 @@ for (const path of pages) {
     await expect(page.locator("h1")).toHaveCount(1);
     const title = await page.title();
     expect(title.length).toBeGreaterThan(10);
-    expect(title.length).toBeLessThanOrEqual(70);
+    expect(title.length).toBeLessThanOrEqual(60);
     const desc = await page.locator('meta[name="description"]').getAttribute("content");
     expect(desc && desc.length).toBeGreaterThan(70);
     expect(desc!.length).toBeLessThanOrEqual(170);
@@ -84,6 +91,8 @@ test("structured data is valid JSON and omits unverified fields", async ({ page 
   const biz = blocks.find((b) => b["@type"] === "HomeAndConstructionBusiness");
   expect(biz.telephone).toBeUndefined();
   expect(biz.address).toBeUndefined();
+  expect(biz.areaServed).toEqual(expect.arrayContaining([{ "@type": "City", name: "Sarasota, FL" }]));
+  expect(biz.aggregateRating).toBeUndefined();
   expect(types).not.toContain("FAQPage");
 });
 
@@ -102,7 +111,7 @@ test("form submits successfully and preselects service from URL", async ({ page,
   await expect(page.getByLabel(/^Service needed/)).toHaveValue("senior-downsizing");
   await page.getByLabel(/^Name/).fill("Test Visitor");
   await page.getByLabel(/^Email/).fill("visitor@example.com");
-  await page.getByLabel(/^Property city or ZIP/).fill("98052");
+  await page.getByLabel(/^Property city or ZIP/).fill("34236");
   await page.getByLabel(/^Timeline/).selectOption("1-3-months");
   await page.getByLabel(/^Tell us about the property/).fill("Parent moving to assisted living; house needs clearing.");
   await page.getByLabel(/I agree that Briarstone Prep/).check();

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { allowIndexing } from "./src/lib/indexing";
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -7,6 +8,10 @@ const securityHeaders = [
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
 ];
+
+// Deploy previews, branch deploys and NEXT_PUBLIC_ALLOW_INDEXING=false builds
+// must never be indexed. See src/lib/indexing.ts.
+if (!allowIndexing) securityHeaders.push({ key: "X-Robots-Tag", value: "noindex, nofollow" });
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,

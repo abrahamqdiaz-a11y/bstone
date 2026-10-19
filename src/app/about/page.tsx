@@ -3,13 +3,13 @@ import { PageHero } from "@/components/templates/PageHero";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
 import { SectionHeader } from "@/components/ui/Section";
-import { business } from "@/content/site";
+import { business, serviceArea } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "About Us",
+  title: "About Briarstone Prep: Estate Cleanouts in Sarasota, FL",
   description:
-    "Briarstone Prep helps families, executors, homeowners, and agents with the physical work of a home transition: one plan, clear updates, and care for the home.",
+    "Briarstone Prep handles estate cleanouts, downsizing and home prep in Sarasota and Manatee: one plan, clear updates, care for the home. Call to talk.",
   path: "/about",
 });
 
@@ -34,8 +34,8 @@ export default function AboutPage() {
       <PageHero
         crumbs={[{ name: "About", path: "/about" }]}
         eyebrow="About us"
-        title="Steady hands for a home in transition."
-        lead={`Briarstone Prep helps people through the physical work of moving a home toward its next chapter—clearing belongings, arranging donations, cleaning, and preparing the property for what comes next.${
+        title="About Briarstone Prep: Estate Cleanouts and Home Prep in Sarasota"
+        lead={`Steady hands for a home in transition. Briarstone Prep helps people in ${serviceArea.region} through the physical work of moving a home toward its next chapter—estate cleanouts, arranging donations, cleaning, and preparing the property for what comes next.${
           business.ownershipStatement ? ` ${business.ownershipStatement}.` : ""
         }`}
         photo={{ slot: "about", fallback: "garden" }}
@@ -56,8 +56,8 @@ export default function AboutPage() {
             </p>
             <p>
               The name says something about how we want to work. Briar is the hardy, tangled growth that takes over a
-              Pacific Northwest yard when no one has time to tend it. Stone is what stays solid underneath. We clear
-              the tangle and leave you on steady ground.
+              yard when no one has time to tend it. Stone is what stays solid underneath. We clear the tangle and
+              leave you on steady ground.
             </p>
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function AboutPage() {
       </section>
 
       <div className="border-t hairline">
-        <Process headingId="about-process" />
+        <Process headingId="about-process" title="How we work, from first call to finished home" />
       </div>
       <CtaBand />
     </>

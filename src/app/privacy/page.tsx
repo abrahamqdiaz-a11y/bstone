@@ -3,8 +3,9 @@ import { business } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Privacy Policy",
-  description: "How Briarstone Prep collects, uses, and protects the information you share through this website.",
+  title: "Privacy Policy | Briarstone Prep, Sarasota, FL",
+  description:
+    "How Briarstone Prep, a Sarasota estate cleanout and home preparation company, collects, uses, and protects the information you share on this website.",
   path: "/privacy",
 });
 

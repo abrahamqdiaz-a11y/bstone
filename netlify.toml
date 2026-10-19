@@ -9,3 +9,24 @@
 # Next.js Runtime (OpenNext adapter) for SSR routes and Server Actions.
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Canonical host is https://briarstoneprep.com. Send www and plain-HTTP
+# requests there with a single 301 so ranking signals aren't split.
+# Netlify also enforces HTTPS once the certificate is provisioned.
+[[redirects]]
+  from = "https://www.briarstoneprep.com/*"
+  to = "https://briarstoneprep.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.briarstoneprep.com/*"
+  to = "https://briarstoneprep.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://briarstoneprep.com/*"
+  to = "https://briarstoneprep.com/:splat"
+  status = 301
+  force = true

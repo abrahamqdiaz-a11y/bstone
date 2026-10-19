@@ -23,7 +23,12 @@ export async function generateMetadata(props: PageProps<"/services/[slug]">) {
   const { slug } = await props.params;
   const s = getService(slug);
   if (!s) return {};
-  return pageMetadata({ title: s.metaTitle, description: s.metaDescription, path: `/services/${s.slug}` });
+  return pageMetadata({
+    title: s.metaTitle,
+    description: s.metaDescription,
+    path: `/services/${s.slug}`,
+    ogImage: `service-${s.slug}`,
+  });
 }
 
 export default async function ServicePage(props: PageProps<"/services/[slug]">) {
@@ -48,7 +53,7 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
 
       <section aria-labelledby="situations" className="py-20">
         <div className="container-bs grid gap-12 lg:grid-cols-[1fr_1.4fr]">
-          <SectionHeader id="situations" eyebrow="Is this for you?" title="This service is a good fit if…" />
+          <SectionHeader id="situations" eyebrow="Is this for you?" title={s.headings.situations} />
           <ul className="grid gap-4 sm:grid-cols-2">
             {s.situations.map((sit) => (
               <li key={sit} className="flex gap-4 rounded-card border hairline bg-white p-5 leading-relaxed">
@@ -65,7 +70,7 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
           <SectionHeader
             id="included"
             eyebrow="What's included"
-            title="How we can help."
+            title={s.headings.included}
             intro="Every project is scoped to the property and what you need. Typical work includes:"
           />
           <ul className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
@@ -92,23 +97,29 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
               Request a Consultation
             </ButtonLink>
           </div>
-          <SidebarLinks resources={s.resources} audiences={s.audiences} />
+          <SidebarLinks
+            topic={s.navLabel}
+            labels={{ guides: `Guides on ${s.navLabel.toLowerCase()}`, audiences: `Who needs ${s.navLabel.toLowerCase()}` }}
+            resources={s.resources}
+            audiences={s.audiences}
+            showAreas
+          />
         </aside>
       </div>
 
       <div className="border-t hairline">
-        <Process headingId="service-process" id="process" />
+        <Process headingId="service-process" id="process" title={s.headings.process} />
       </div>
 
       <section aria-labelledby="service-faq" className="border-t hairline py-20">
         <div className="container-bs grid gap-12 lg:grid-cols-[1fr_1.6fr]">
-          <SectionHeader id="service-faq" eyebrow="Questions" title={`${s.navLabel}: common questions`} />
+          <SectionHeader id="service-faq" eyebrow="Questions" title={s.headings.faq} />
           <FaqList faqs={s.faqs} />
         </div>
       </section>
 
-      <RelatedServices slugs={s.related} />
-      <InquirySection sourcePage={path} defaultService={s.inquiryService} />
+      <RelatedServices slugs={s.related} title={s.headings.related} />
+      <InquirySection sourcePage={path} defaultService={s.inquiryService} title={`Ask about ${s.navLabel.toLowerCase()}`} />
       <JsonLd data={serviceSchema(s)} />
     </>
   );
