@@ -21,6 +21,8 @@
 
   --font-serif: var(--font-newsreader), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-logo: var(--font-cormorant), Georgia, serif;
+  --font-logo-tag: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 
   --radius-card: 0.875rem;
   --shadow-card: 0 1px 2px rgb(36 61 53 / 0.04), 0 8px 24px -12px rgb(36 61 53 / 0.12);

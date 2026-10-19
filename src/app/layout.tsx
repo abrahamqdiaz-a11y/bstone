@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { business, hasPhone, siteUrl, telHref } from "@/content/site";
 import { businessSchema, websiteSchema } from "@/lib/schema";
-import { inter, newsreader } from "./fonts";
+import { cormorant, inter, montserrat, newsreader } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-US" className={`${newsreader.variable} ${inter.variable}`}>
+    <html lang="en-US" className={`${newsreader.variable} ${inter.variable} ${cormorant.variable} ${montserrat.variable}`}>
       <body className="min-h-dvh antialiased">
         <a
           href="#main"
