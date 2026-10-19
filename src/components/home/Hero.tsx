@@ -8,7 +8,7 @@ export function Hero() {
     <section className="relative overflow-hidden bg-linen/40">
       <div className="container-bs grid items-center gap-12 pt-12 pb-24 md:pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-28">
         <div>
-          <Eyebrow as="h1">Estate Cleanout and Home Preparation in Sarasota and Manatee</Eyebrow>
+          <Eyebrow as="h1">Estate Cleanouts &amp; Downsizing in Sarasota &amp; Manatee County</Eyebrow>
           {/* Subheading: the visual headline, kept in its original display style. */}
           <p className="mt-6 font-serif text-[2.75rem] leading-[1.02] font-[450] tracking-[-0.015em] text-balance text-forest sm:text-6xl lg:text-[4.4rem]">
             A home full of history.<br /><em className="font-[inherit] italic text-brass-deep">A clear path forward.</em>
