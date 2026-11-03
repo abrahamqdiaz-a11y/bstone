@@ -26,7 +26,7 @@ export function Trust() {
   return (
     <section aria-labelledby="trust" className="py-20 md:py-28">
       <div className="container-bs grid gap-14 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-20">
-        <PhotoSlot slot="trust" fallback="door" className="aspect-[4/3.4] order-last lg:order-first" />
+        <PhotoSlot slot="trust" fallback="door" className="aspect-[4/3] order-last lg:order-first" />
         <div>
           <SectionHeader
             id="trust"
