@@ -12,7 +12,7 @@ The selected image URLs are from Unsplash, whose standard license permits free c
 | --- | --- |
 | Homepage hero | https://images.unsplash.com/photo-1600210492486-724fe5c67fb0 |
 | Inherited homes | https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde |
-| Senior downsizing | https://images.unsplash.com/photo-1586023492125-27b2c045efd7 |
+| Senior downsizing | Supplied image, `public/photos/senior-downsizing.webp` (illustrative, not a Briarstone job) |
 | Estate transitions | https://images.unsplash.com/photo-1600585154340-be6161a56a0c |
 | Pre-listing preparation | https://images.unsplash.com/photo-1600607687939-ce8a6c25118c |
 | Home cleanouts | https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3 |

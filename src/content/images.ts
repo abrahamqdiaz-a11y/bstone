@@ -38,7 +38,14 @@ export const photos = {
   },
   "service-cleanouts": stock("photo-1600566753086-00f18fb6b3ea", "Natural materials and considered details in a home interior"),
   "service-inherited": stock("photo-1600047509807-ba8f99d2cdde", "A bright residential interior ready for a new chapter"),
-  "service-downsizing": stock("photo-1586023492125-27b2c045efd7", "A comfortable living area with a simple furniture arrangement"),
+  // Supplied illustrative image (not a Briarstone job), so it keeps the stock label.
+  "service-downsizing": {
+    src: "/photos/senior-downsizing.webp",
+    alt: "Moving boxes on a woven rug in a sunny living room, one open with plates and a blue-and-white ginger jar packed in bubble wrap, beside a wood coffee table and a cream sofa",
+    width: 1448,
+    height: 1086,
+    stock: true,
+  },
   "service-transitions": stock("photo-1600585154340-be6161a56a0c", "A residential home with an inviting outdoor setting"),
   "service-market-ready": stock("photo-1600607687939-ce8a6c25118c", "A clean, light-filled home interior"),
   "service-home-cleanouts": stock("photo-1600566753190-17f0baa2a6c3", "An open residential space with room to move"),
