@@ -43,8 +43,15 @@ export const photos = {
   "service-market-ready": stock("photo-1600607687939-ce8a6c25118c", "A clean, light-filled home interior"),
   "service-home-cleanouts": stock("photo-1600566753190-17f0baa2a6c3", "An open residential space with room to move"),
   "service-projects": stock("photo-1600607687920-4e2a09cf159d", "Interior finishes and fixtures in a home"),
-  // JOB PHOTO SLOT: replace with a real photo of a Briarstone team at work (no faces without releases).
-  trust: null,
+  // Supplied illustrative image (not a Briarstone job), so it keeps the stock label.
+  // Replace with a real photo of a Briarstone team at work when one is approved (no faces without releases).
+  trust: {
+    src: "/photos/how-we-work.webp",
+    alt: "A sunlit entryway with the front door open to a palm-lined walk, moving boxes on a woven rug, and a green vase and ceramic jar packed in bubble wrap beside an armchair",
+    width: 1448,
+    height: 1086,
+    stock: true,
+  },
   // JOB PHOTO SLOT: replace with a real before/after of a cleared room.
   problem: null,
   // JOB PHOTO SLOT: replace with a real photo from a Sarasota-area job.
