@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   // Non-production Netlify deploys and NEXT_PUBLIC_ALLOW_INDEXING=false get
   // noindex here and an X-Robots-Tag header from next.config.ts.
   robots: allowIndexing ? { index: true, follow: true } : { index: false, follow: false },
+  verification: {
+    google: "_r1TxK6SJVztG06499wsTrF5E2J0aG5GVeAmt8Huy_k",
+  },
 };
 
 export const viewport: Viewport = {
